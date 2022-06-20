@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
-import { filterItem } from "../utils/filterItem";
-import { findTask } from "../utils/findTask";
+import { filterItem } from "utils/filterItem.js";
+import { findTask } from "utils/findTask.js";
 export const taskReducer = (state, action) => {
   switch (action.type) {
     case "SET_INITIAL_DATA": {

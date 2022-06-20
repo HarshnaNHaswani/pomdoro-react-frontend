@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
-import { Footer } from "../Footer";
-import { Header } from "../Header/Header";
-import { NavigateSite } from "../NavigateSite";
+import { Footer } from "components/Footer.jsx";
+import { Header } from "components/Header/Header.jsx";
+
+import { NavigateSite } from "components/NavigateSite";
 
 
 export const MainLayout = () => {

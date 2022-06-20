@@ -21,6 +21,9 @@
  - get completed tasks statistical data (completed tasks per day for last 'N' days)
  - authentication
 
+## Test Driven Development
+  - reducers
+  - utils
  *All the belong to their respective owners; downloaded from __[flaticon](https://www.flaticon.com)__.*
 
  *All the images used on the landing page are downloaded __[unsplash](https://unsplash.com/)__.*

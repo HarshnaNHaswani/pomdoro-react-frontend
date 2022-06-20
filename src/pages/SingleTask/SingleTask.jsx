@@ -1,23 +1,24 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { StopWatch } from "../../components/StopWatch";
-import { useTasks } from "../../context/task-context";
-import { findTask } from "../../utils/findTask";
-import NotPinned from "../../assets/notPinned.png";
-import NotPinnedDark from "../../assets/notPinnedDark.png";
-import Archive from "../../assets/archive.png";
-import ArchiveDark from "../../assets/archiveDark.png";
-import Unarchive from "../../assets/unarchive.png";
-import UnarchiveDark from "../../assets/unarchiveDark.png";
-import Restore from "../../assets/restore.png";
-import RestoreDark from "../../assets/restoreDark.png";
-import { useTheme } from "../../context/theme-context";
-import { TaskModal } from "../Home/TaskModal";
+import { StopWatch } from "components/StopWatch";
+import { useTasks } from "context/task-context.js";
+import { findTask } from "utils/findTask.js";
+import NotPinned from "assets/notPinned.png";
+import NotPinnedDark from "assets/notPinnedDark.png";
+import Archive from "assets/archive.png";
+import ArchiveDark from "assets/archiveDark.png";
+import Unarchive from "assets/unarchive.png";
+import UnarchiveDark from "assets/unarchiveDark.png";
+import Restore from "assets/restore.png";
+import RestoreDark from "assets/restoreDark.png";
+import { useTheme } from "context/theme-context.js";
+import { TaskModal } from "pages/Home/TaskModal";
+
 
 export const SingleTask = () => {
   const { taskId } = useParams();
   const {
-    tasksState,
+    tasksState:{archivedTasks, trash, tasks},
     togglePin,
     trashTask,
     deleteTaskFromTrash,
@@ -26,10 +27,9 @@ export const SingleTask = () => {
     deleteTaskFromArchive,
     unarchiveTask,
   } = useTasks();
-  const isArchived = tasksState.archivedTasks.some(({ _id }) => _id === taskId);
-  const isTrash = tasksState.trash.some(({ _id }) => taskId === _id);
-  const { theme } = useTheme();
-  const { dark } = theme;
+  const isArchived = archivedTasks.some(({ _id }) => _id === taskId);
+  const isTrash = trash.some(({ _id }) => taskId === _id);
+  const { theme: {dark} } = useTheme();
   const deleteTaskHandler = () => {
     isArchived
       ? deleteTaskFromArchive(task._id)
@@ -38,14 +38,13 @@ export const SingleTask = () => {
       : trashTask(task._id);
   };
 
-  console.log(taskId, tasksState.tasks);
   const [showEditTaskModal, setShowEditTaskModal] = useState(false);
 
   const task = isArchived
-    ? findTask(tasksState.archivedTasks, taskId)
+    ? findTask(archivedTasks, taskId)
     : isTrash
-    ? findTask(tasksState.trash, taskId)
-    : findTask(tasksState.tasks, taskId);
+    ? findTask(trash, taskId)
+    : findTask(tasks, taskId);
 
   if (task) {
     return (

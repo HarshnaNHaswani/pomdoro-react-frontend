@@ -1,20 +1,20 @@
 import React from "react";
 import { useRoutes } from "react-router-dom";
-import { AuthLayout } from "../components/layout/AuthLayout";
-import { MainLayout } from "../components/layout/MainLayout";
-import { RequiresAuth } from "../components/RequiresAuth/RequiresAuth";
-import { AllTasks } from "../pages/AllTasks/AllTasks";
-import { Archive } from "../pages/Archive/Archive";
-import { AuthIndex } from "../pages/Auth/AuthIndex";
-import { Login } from "../pages/Auth/Login";
-import { Signup } from "../pages/Auth/Signup";
-import { Home } from "../pages/Home/Home";
-import { NotFound } from "../pages/NotFound/NotFound";
-import { SingleTask } from "../pages/SingleTask/SingleTask";
-import { TaskIndex } from "../pages/TaskIndex/TaskIndex";
-import { TaskStatistics } from "../pages/TaskStatistics/TaskStatistics";
-import { Trash } from "../pages/Trash/Trash";
-import { Profile } from "../pages/User/Profile";
+import { AuthLayout } from "components/layout/AuthLayout.jsx";
+import { MainLayout } from "components/layout/MainLayout.jsx";
+import { RequiresAuth } from "components/RequiresAuth/RequiresAuth.jsx";
+import { AllTasks } from "pages/AllTasks/AllTasks";
+import { Archive } from "pages/Archive/Archive";
+import { AuthIndex } from "pages/Auth/AuthIndex";
+import { Login } from "pages/Auth/Login";
+import { Signup } from "pages/Auth/Signup";
+import { Home } from "pages/Home/Home";
+import { NotFound } from "pages/NotFound/NotFound";
+import { SingleTask } from "pages/SingleTask/SingleTask";
+import { TaskIndex } from "pages/TaskIndex/TaskIndex";
+import { TaskStatistics } from "pages/TaskStatistics/TaskStatistics";
+import { Trash } from "pages/Trash/Trash";
+import { Profile } from "pages/User/Profile.jsx";
 import MockmanEs from "mockman-js";
 
 export const Router = () => {

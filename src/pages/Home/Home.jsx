@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { TaskCard } from "../../components/TaskCard";
-import { useTasks } from "../../context/task-context";
+import { TaskCard } from "components/TaskCard";
+import { useTasks } from "context/task-context.js";
 import { TaskModal } from "./TaskModal";
-import DownArrow from "../../assets/down-arrow.png";
+import DownArrow from "assets/down-arrow.png";
 export const Home = () => {
-  const { tasksState, clearPendingTasks } = useTasks();
-  const { tasks } = tasksState;
+  const { tasksState :{tasks}, clearPendingTasks } = useTasks();
   const [selectVal, setSelectValue] = useState({
     sortPriority: "none",
     filterPriority: "none",

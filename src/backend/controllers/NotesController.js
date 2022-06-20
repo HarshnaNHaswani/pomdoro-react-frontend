@@ -1,5 +1,5 @@
 import { Response } from "miragejs";
-import { requiresAuth } from "../utils/authUtils";
+import { requiresAuth } from "backend/utils/authUtils.js";
 import { v4 as uuid } from "uuid";
 
 /**

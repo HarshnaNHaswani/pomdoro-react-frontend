@@ -45,34 +45,6 @@ export const unarchiveTaskService = async ({ taskId, encodedToken}) =>
       },
     }
   );
-
-// export const deleteFromArchive = async (task) => {
-//   const calls = [
-//     `/api/archives/restore/${task._id}`,
-//     `/api/notes/trash/${task._id}`,
-//   ];
-//   return calls.map(
-//     call => await axios.post(
-//       call,
-//       {},
-//       {
-//         headers: {
-//           authorization: encodedToken,
-//         },
-//       }
-//     )
-//   )
-// };
-// const deleteTaskService = async (task) =>
-//   await axios.post(
-//     `/api/archives/delete/${task._id}`,
-//     {},
-//     {
-//       headers: {
-//         authorization: encodedToken,
-//       },
-//     }
-//   );
 export const deleteFromArchive = async ({taskId, encodedToken}) =>
   await axios.post(
     `/api/archives/delete/${taskId}`,
@@ -93,9 +65,6 @@ export const deleteFromArchive = async ({taskId, encodedToken}) =>
       },
     }
   );
-// const completeTaskService = async (task) => {
-
-// }
 export const trashTaskService = async ({ taskId, encodedToken}) =>
   await axios.post(
     `/api/notes/trash/${taskId}`,

@@ -1,19 +1,18 @@
 import { useEffect, useRef, useState } from "react";
-import Pause from "../assets/pause.png";
-import Play from "../assets/play.png";
-import Restart from "../assets/restart.png";
-import Stop from "../assets/stop.png";
-import PauseDark from "../assets/pauseDark.png";
-import PlayDark from "../assets/playDark.png";
-import RestartDark from "../assets/restartDark.png";
-import StopDark from "../assets/stopDark.png";
-import { useTasks } from "../context/task-context";
-import { useTheme } from "../context/theme-context";
+import Pause from "assets/pause.png";
+import Play from "assets/play.png";
+import Restart from "assets/restart.png";
+import Stop from "assets/stop.png";
+import PauseDark from "assets/pauseDark.png";
+import PlayDark from "assets/playDark.png";
+import RestartDark from "assets/restartDark.png";
+import StopDark from "assets/stopDark.png";
+import { useTasks } from "context/task-context.js";
+import { useTheme } from "context/theme-context.js";
 
 export const StopWatch = ({ duration, taskId, disabled }) => {
   const { completeTask } = useTasks();
-  const { theme } = useTheme();
-  const {dark} = theme;
+  const { theme: {dark} } = useTheme();
   const timerRef = useRef({ timerId: null, currentDuration: null });
   const totalSeconds = timerRef.currentDuration
     ? timerRef.currentDuration

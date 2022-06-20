@@ -1,10 +1,10 @@
 import "./App.css";
-import { Router } from "./router";
-import { useTheme } from "./context/theme-context";
+import { Router } from "router";
+import { useTheme } from "context/theme-context.js";
 function App() {
-  const { theme } = useTheme();
+  const { theme: {dark} } = useTheme();
   return (
-    <div className={`App bg-default ${theme.dark ? "dark" : ""}`}>
+    <div className={`App bg-default ${dark ? "dark" : ""}`}>
       <Router />
     </div>
   );

@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import NotPinned from "../assets/notPinned.png";
-import NotPinnedDark from "../assets/notPinnedDark.png";
-import Archive from "../assets/archive.png";
-import ArchiveDark from "../assets/archiveDark.png";
-import Unarchive from "../assets/unarchive.png";
-import UnarchiveDark from "../assets/unarchiveDark.png";
-import Restore from "../assets/restore.png";
-import RestoreDark from "../assets/restoreDark.png";
-import { useTheme } from "../context/theme-context";
-import { useTasks } from "../context/task-context";
-import { TaskModal } from "../pages/Home/TaskModal";
+import NotPinned from "assets/notPinned.png";
+import NotPinnedDark from "assets/notPinnedDark.png";
+import Archive from "assets/archive.png";
+import ArchiveDark from "assets/archiveDark.png";
+import Unarchive from "assets/unarchive.png";
+import UnarchiveDark from "assets/unarchiveDark.png";
+import Restore from "assets/restore.png";
+import RestoreDark from "assets/restoreDark.png";
+import { useTheme } from "context/theme-context.js";
+import { useTasks } from "context/task-context.js";
+import { TaskModal } from "pages/Home/TaskModal";
 export const TaskCard = ({ task, isArchived = false, isTrash = false }) => {
   const {
     togglePin,
@@ -22,8 +22,7 @@ export const TaskCard = ({ task, isArchived = false, isTrash = false }) => {
     unarchiveTask,
   } = useTasks();
 
-  const { theme } = useTheme();
-  const { dark } = theme;
+  const { theme: {dark} } = useTheme();
   const deleteTaskHandler = () => {
     isArchived
       ? deleteTaskFromArchive(task?._id)
