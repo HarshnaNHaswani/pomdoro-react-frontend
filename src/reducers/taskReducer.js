@@ -112,6 +112,16 @@ export const taskReducer = (state, action) => {
             ? { ...task, taskPriority: action.payload.taskPriority }
             : task
         ),
+        archivedTasks: state.archivedTasks.map((task) =>
+          task._id === taskId
+            ? { ...task, taskPriority: action.payload.taskPriority }
+            : task
+        ),
+        trash: state.trash.map((task) =>
+          task._id === taskId
+            ? { ...task, taskPriority: action.payload.taskPriority }
+            : task
+        ),
       };
     }
     case "TOGGLE_TASK_PIN": {
@@ -185,7 +195,7 @@ export const taskReducer = (state, action) => {
     case "CLEAR_ARCHIVE": {
       return {
         ...state,
-        archive: [],
+        archivedTasks: [],
       };
     }
     case "CLEAR_TRASH": {
