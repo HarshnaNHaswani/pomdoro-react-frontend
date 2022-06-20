@@ -26,9 +26,7 @@ export const SingleTask = () => {
     deleteTaskFromArchive,
     unarchiveTask,
   } = useTasks();
-  const isArchived = tasksState.archivedTasks.some(
-    ({ _id }) => _id === taskId
-  );
+  const isArchived = tasksState.archivedTasks.some(({ _id }) => _id === taskId);
   const isTrash = tasksState.trash.some(({ _id }) => taskId === _id);
   const { theme } = useTheme();
   const { dark } = theme;
@@ -52,6 +50,33 @@ export const SingleTask = () => {
   if (task) {
     return (
       <div className="center-x">
+        <section>
+          {task?.taskPriority === "5" && (
+            <p className={`text text-md status-inactive-bg`}>
+              <strong>least</strong>
+            </p>
+          )}
+          {task?.taskPriority === "4" && (
+            <p className={`text text-md status-available-bg`}>
+              <strong>low</strong>
+            </p>
+          )}
+          {task?.taskPriority === "3" && (
+            <p className={`text text-md status-active-bg`}>
+              <strong>medium</strong>
+            </p>
+          )}
+          {task?.taskPriority === "2" && (
+            <p className={`text text-md badge-md status-idle-bg`}>
+              <strong>high</strong>
+            </p>
+          )}
+          {task?.taskPriority === "1" && (
+            <p className={`text text-md status-busy-bg`}>
+              <strong>very high</strong>
+            </p>
+          )}
+        </section>
         <h1>{task.title}</h1>
         <p>{task.description}</p>
         {showEditTaskModal && (
