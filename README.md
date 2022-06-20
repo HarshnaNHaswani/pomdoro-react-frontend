@@ -20,5 +20,8 @@
  - get completed tasks statistical data (completed tasks per day for last 'N' days)
  - authentication
 
- *All the belong to their respective owners; downloaded from flaticon.com*
- *All the images used on the landing page are downloaded unsplash.com*
+ *All the belong to their respective owners; downloaded from __[flaticon](https://www.flaticon.com)__.*
+
+ *All the images used on the landing page are downloaded __[unsplash](https://unsplash.com/)__.*
+
+ *The base files for mock backend are downloaded from __[mockee](https://mockbee.netlify.app/)__ and modified as required.*
