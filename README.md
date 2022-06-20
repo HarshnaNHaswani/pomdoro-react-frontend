@@ -19,3 +19,6 @@
  - Sort Task on tags, and priority
  - get completed tasks statistical data (completed tasks per day for last 'N' days)
  - authentication
+
+ *All the belong to their respective owners; downloaded from flaticon.com*
+ *All the images used on the landing page are downloaded unsplash.com*
