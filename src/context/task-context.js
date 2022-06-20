@@ -1,0 +1,192 @@
+import axios from "axios";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
+import { taskReducer } from "../reducers/taskReducer";
+import { useAuth } from "./auth-context";
+import { nanoid } from "nanoid";
+import {
+  getArchivedTasks,
+  getPendingTasks,
+  getTrashTasks,
+} from "../services/getTasks";
+import {
+  addTaskService,
+  editTaskService,
+  archiveTaskService,
+  completeTaskService,
+  deleteFromArchive,
+  permanentlyDeleteTaskService,
+  restoreTaskService,
+  trashTaskService,
+  unarchiveTaskService,
+} from "../services/taskServices";
+const initialState = {
+  tasks: [],
+  completedTaskStats: [],
+  archivedTasks: [],
+  trash: [],
+  // error: { archive: null, trash: null, pending: null, taskStats: null },
+  //completed task data: [{ date: null, taskIds: [] }]
+};
+
+const TasksContext = createContext();
+const TasksProvider = ({ children }) => {
+  const [temp, setTemp] = useState(initialState);
+  const [tasksState, tasksDispatch] = useReducer(taskReducer, initialState);
+  const { token: encodedToken } = useAuth();
+  const addTask = async (task) => {
+    try {
+      const _id = nanoid();
+      console.log(task);
+      const response = await addTaskService({
+        task: { ...task, _id },
+        encodedToken,
+      });
+      if (response.status === 201)
+        tasksDispatch({
+          type: "ADD_TASK",
+          payload: { task: { ...task, _id } },
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const updateTask = async (task) => {
+    try {
+      const response = await editTaskService({ task, encodedToken });
+      if (response.status === 201)
+        tasksDispatch({ type: "UPDATE_TASK", payload: { task } });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const completeTask = async (taskId) => {
+    try {
+      const response = await completeTaskService({ taskId, encodedToken });
+      if (response.status === 201)
+        tasksDispatch({ type: "COMPLETE_TASK", payload: { taskId } });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const updateTaskPriority = async (taskId, taskPriority) => {
+    tasksDispatch({
+      type: "UPDATE_PRIORITY",
+      payload: { taskId, taskPriority },
+    });
+  };
+  const togglePin = async (taskId) => {
+    tasksDispatch({ type: "TOGGLE_TASK_PIN", payload: { taskId } });
+  };
+  const trashTask = async (taskId) => {
+    try {
+      const response = await trashTaskService({ taskId, encodedToken });
+      if (response.status === 201)
+        tasksDispatch({ type: "DELETE_TASK", payload: { taskId } });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const restoreTask = async (taskId) => {
+    try {
+      const response = await restoreTaskService({ taskId, encodedToken });
+      if (response.status === 200)
+        tasksDispatch({ type: "RESTORE_TASK", payload: { taskId } });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deleteTaskFromTrash = async (taskId) => {
+    try {
+      const response = await permanentlyDeleteTaskService({
+        taskId,
+        encodedToken,
+      });
+      if (response.status === 200)
+        tasksDispatch({ type: "DELETE_FROM_TRASH", payload: { taskId } });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const archiveTask = async (taskId) => {
+    try {
+      const response = await archiveTaskService({ taskId, encodedToken });
+      if (response.status === 201)
+        tasksDispatch({ type: "ARCHIVE_TASK", payload: { taskId } });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const unarchiveTask = async (taskId) => {
+    try {
+      const response = await unarchiveTaskService({ taskId, encodedToken });
+      if (response.status === 200)
+        tasksDispatch({ type: "UNARCHIVE_TASK", payload: { taskId } });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deleteTaskFromArchive = async (taskId) => {
+    try {
+      const response = await deleteFromArchive({ taskId, encodedToken });
+      if (response.status === 200)
+        tasksDispatch({ type: "DELETE_FROM_ARCHIVE", payload: { taskId } });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const clearPendingTasks = () =>
+    tasksDispatch({ type: "CLEAR_PENDING", payload: {} });
+  const clearArchive = () =>
+    tasksDispatch({ type: "CLEAR_ARCHIVE", payload: {} });
+  const clearTrash = () => tasksDispatch({ type: "CLEAR_TRASH", payload: {} });
+
+  const setInitialData = ({ tasks, archivedTasks, trash }) => {
+    const completedTaskStats =
+      JSON.parse(localStorage.getItem("completed")) ?? [];
+    tasksDispatch({
+      type: "SET_INITIAL_DATA",
+      payload: { tasks, archivedTasks, trash, completedTaskStats },
+    });
+  };
+  return (
+    <TasksContext.Provider
+      value={{
+        tasksState,
+        setInitialData,
+        addTask,
+        updateTask,
+        completeTask,
+        updateTaskPriority,
+        togglePin,
+        clearPendingTasks,
+        trashTask,
+        deleteTaskFromTrash,
+        restoreTask,
+        clearTrash,
+        archiveTask,
+        deleteTaskFromArchive,
+        unarchiveTask,
+        clearArchive,
+      }}
+    >
+      {children}
+    </TasksContext.Provider>
+  );
+};
+
+const useTasks = () => useContext(TasksContext);
+
+export { useTasks, TasksProvider };
+
+const errorCode = {
+  200: "Okay", // get, delete, restore
+  201: "Success", //create, update, archive, trash
+  404: "User Not found",
+  500: "Server Error! Please try again later",
+};
