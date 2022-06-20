@@ -1,0 +1,43 @@
+@import url("https://design-with-ira.netlify.app/installationlinks/main.css");
+
+html,
+body {
+  min-height: 100vh;
+  width: 100%;
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+div#root,
+div.App {
+  margin: 0;
+  padding: 0;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+div {
+  margin: 0;
+}
+
+hr {
+  margin: 1ch;
+}
+main {
+  margin: 10px;
+}
+select {
+  padding: 8px;
+  border-radius: 5px;
+}
