@@ -1,12 +1,8 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
-import timer from "../../assets/timer.jpg";
-import timer2 from "../../assets/timer2.jpg";
-// import stats from "../../assets/stats.jpg";
-import stats2 from "../../assets/stats2.jpg";
-import todo from "../../assets/todo.jpg";
-import todo2 from "../../assets/todo2.jpg";
-import graph from "../../assets/graph.jpg";
+import graph from "assets/graph.jpg";
+import stats2 from "assets/stats2.jpg";
+import timer2 from "assets/timer2.jpg";
+import todo from "assets/todo.jpg";
 export const AuthLayout = () => {
   const parallax = [
     { img: todo, content: "Keep track of all your tasks" },

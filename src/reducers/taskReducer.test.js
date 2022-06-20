@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { taskReducer } from "./taskReducer";
+import { taskReducer } from "taskReducer";
 
 jest.createMockFromModule("dayjs");
 

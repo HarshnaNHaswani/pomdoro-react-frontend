@@ -1,42 +1,27 @@
-import axios from "axios";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
-import { taskReducer } from "../reducers/taskReducer";
-import { useAuth } from "./auth-context";
 import { nanoid } from "nanoid";
 import {
-  getArchivedTasks,
-  getPendingTasks,
-  getTrashTasks,
-} from "../services/getTasks";
+  createContext,
+  useContext, useReducer
+} from "react";
+import { taskReducer } from "reducers/taskReducer.js";
 import {
-  addTaskService,
-  editTaskService,
-  archiveTaskService,
+  addTaskService, archiveTaskService,
   completeTaskService,
-  deleteFromArchive,
-  permanentlyDeleteTaskService,
+  deleteFromArchive, editTaskService, permanentlyDeleteTaskService,
   restoreTaskService,
   trashTaskService,
-  unarchiveTaskService,
-} from "../services/taskServices";
+  unarchiveTaskService
+} from "services/taskServices.js";
+import { useAuth } from "context/auth-context.js";
 const initialState = {
   tasks: [],
   completedTaskStats: [],
   archivedTasks: [],
   trash: [],
-  // error: { archive: null, trash: null, pending: null, taskStats: null },
-  //completed task data: [{ date: null, taskIds: [] }]
 };
 
 const TasksContext = createContext();
 const TasksProvider = ({ children }) => {
-  const [temp, setTemp] = useState(initialState);
   const [tasksState, tasksDispatch] = useReducer(taskReducer, initialState);
   const { token: encodedToken } = useAuth();
   const addTask = async (task) => {
@@ -53,7 +38,7 @@ const TasksProvider = ({ children }) => {
           payload: { task: { ...task, _id } },
         });
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   };
   const updateTask = async (task) => {
@@ -184,9 +169,3 @@ const useTasks = () => useContext(TasksContext);
 
 export { useTasks, TasksProvider };
 
-const errorCode = {
-  200: "Okay", // get, delete, restore
-  201: "Success", //create, update, archive, trash
-  404: "User Not found",
-  500: "Server Error! Please try again later",
-};

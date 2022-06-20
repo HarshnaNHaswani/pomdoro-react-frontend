@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { useAuth } from "../../context/auth-context";
-import { useTheme } from "../../context/theme-context";
-import { slugify } from "../../utils/slugify";
+
+import { useAuth } from "context/auth-context";
+import { useTheme } from "context/theme-context.js";
+import { slugify } from "utils/slugify.js";
 import "./header.css";
 export const Header = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
@@ -11,7 +12,7 @@ export const Header = () => {
   const menuItems = ["all tasks", "archive", "trash", "stats"];
   const [isAuthPage, setIsAuthPage] = useState(false);
 
-  const {theme, toggleDarkTheme} = useTheme();
+  const { theme: {dark} , toggleDarkTheme} = useTheme();
 
   const location = useLocation();
 
@@ -70,11 +71,11 @@ export const Header = () => {
                   <li>
                     <button
                       className={`btn bg-default ${
-                        theme.dark ? "dark" : ""
+                        dark ? "dark" : ""
                       } btn-toggle-theme`}
                       onClick={toggleDarkTheme}
                     >
-                      {theme.dark && (
+                      {dark && (
                         <>
                           <span className="invisible">...</span>
                           <span
@@ -86,7 +87,7 @@ export const Header = () => {
                           </span>
                         </>
                       )}
-                      {!theme.dark && (
+                      {!dark && (
                         <>
                           <span
                             role="img"

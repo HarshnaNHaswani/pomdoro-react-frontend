@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/auth-context";
-import { useTasks } from "../../context/task-context";
-import { useUser } from "../../context/user-context";
-import { signUpService } from "../../services/authServices";
+import { useAuth } from "context/auth-context.js";
+import { useTasks } from "context/task-context.js";
+import { useUser } from "context/user-context.js";
+import { signUpService } from "services/authServices.js";
 export const Signup = () => {
   const { setIsLoggedIn } = useAuth();
   const location = useLocation();

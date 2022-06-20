@@ -3,11 +3,11 @@ import {
   deleteFromArchivesHandler,
   getAllArchivedNotesHandler,
   restoreFromArchivesHandler,
-} from "./backend/controllers/ArchiveController";
+} from "backend/controllers/ArchiveController.js";
 import {
   loginHandler,
   signupHandler,
-} from "./backend/controllers/AuthController";
+} from "backend/controllers/AuthController.js";
 import {
   archiveNoteHandler,
   createNoteHandler,
@@ -16,14 +16,15 @@ import {
   trashNoteHandler,
   completeNoteHandler,
   updateNoteHandler,
-} from "./backend/controllers/NotesController";
+} from "backend/controllers/NotesController.js";
 import {
   deleteFromTrashHandler,
   getAllTrashNotesHandler,
   restoreFromTrashHandler,
   archiveFromTrashHandler,
-} from "./backend/controllers/TrashController";
-import { users } from "./backend/db/users";
+} from "backend/controllers/TrashController.js";
+
+import { users } from "backend/db/users.js";
 
 export function makeServer({ environment = "development" } = {}) {
   const server = new Server({

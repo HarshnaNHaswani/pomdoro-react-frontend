@@ -1,6 +1,6 @@
-import { filterItem } from "./filterItem";
-import { slugify } from "./slugify";
-import { findTask } from "./findTask";
+import { filterItem } from "filterItem.js";
+import { slugify } from "slugify.js";
+import { findTask } from "findTask.js";
 
 describe("testing util functions", () => {
   test("slugify", () => expect(slugify("hello 123")).toBe("hello-123"));
