@@ -1,0 +1,35 @@
+* {
+  font-size: 1em;
+  padding: 0.5ch;
+}
+.taskForm .durationWrapper input[type="number"] {
+  width: 4ch;
+  overflow-x: hidden;
+}
+.taskForm {
+  box-shadow: none;
+  background-color: inherit;
+  color: inherit;
+}
+
+.durationWrapper {
+  justify-content: center;
+}
+.inputWrapper {
+  border-width: 0;
+}
+.durationWrapper label.taskLabel {
+  font-weight: 700;
+}
+.taskForm .inputWrapper input {
+  text-align: right;
+}
+
+.taskForm textarea {
+  resize: none;
+}
+
+.statusPlainOutline {
+  border-bottom: 1px solid var(--color-status-plain);
+  margin-bottom: 8px;
+}
