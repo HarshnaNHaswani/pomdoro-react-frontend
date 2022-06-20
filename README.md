@@ -7,6 +7,7 @@
 - Single Task 
 - All Tasks (all tasks - categorized on pending, archive, trash)
 - Authentication pages
+- User Profile
 ## Features :
  - Add Task
  - Edit Task
