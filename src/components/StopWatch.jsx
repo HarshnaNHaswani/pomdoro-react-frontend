@@ -12,7 +12,9 @@ import { useTheme } from "context/theme-context.js";
 
 export const StopWatch = ({ duration, taskId, disabled }) => {
   const { completeTask } = useTasks();
-  const { theme: {dark} } = useTheme();
+  const {
+    theme: { dark },
+  } = useTheme();
   const timerRef = useRef({ timerId: null, currentDuration: null });
   const totalSeconds = timerRef.currentDuration
     ? timerRef.currentDuration
@@ -21,8 +23,8 @@ export const StopWatch = ({ duration, taskId, disabled }) => {
   const [isPaused, setIsPaused] = useState(true);
 
   const start = () => {
+    setIsPaused(false);
     timerRef.current.timerId = setInterval(() => {
-      setIsPaused(false);
       setProgress((prev) => prev - 1);
     }, 1000);
   };
@@ -81,14 +83,26 @@ export const StopWatch = ({ duration, taskId, disabled }) => {
           onClick={start}
           disabled={!isPaused || progress === 0 || disabled}
         >
-          start <img src={dark? Play : PlayDark} alt="start" title="start" className="icon" />
+          start{" "}
+          <img
+            src={dark ? Play : PlayDark}
+            alt="start"
+            title="start"
+            className="icon"
+          />
         </button>
         <button
           className={`btn btn-icon ${dark ? "bg-accent" : "bg-secondary"}`}
           onClick={pause}
           disabled={isPaused || progress === 0 || disabled}
         >
-          pause <img src={dark? Pause : PauseDark} alt="pause" title="pause" className="icon" />
+          pause{" "}
+          <img
+            src={dark ? Pause : PauseDark}
+            alt="pause"
+            title="pause"
+            className="icon"
+          />
         </button>
         <button
           className={`btn btn-icon ${dark ? "bg-accent" : "bg-secondary"}`}
@@ -96,14 +110,25 @@ export const StopWatch = ({ duration, taskId, disabled }) => {
           disabled={progress === totalSeconds || disabled}
         >
           restart{" "}
-          <img src={dark? Restart : RestartDark} alt="restart" title="restart" className="icon" />
+          <img
+            src={dark ? Restart : RestartDark}
+            alt="restart"
+            title="restart"
+            className="icon"
+          />
         </button>
         <button
           className={`btn btn-icon ${dark ? "bg-accent" : "bg-secondary"}`}
           onClick={stop}
           disabled={progress === totalSeconds || progress === 0 || disabled}
         >
-          stop <img src={dark? Stop : StopDark} alt="Stop" title="Stop" className="icon" />
+          stop{" "}
+          <img
+            src={dark ? Stop : StopDark}
+            alt="Stop"
+            title="Stop"
+            className="icon"
+          />
         </button>
       </section>
     </div>
