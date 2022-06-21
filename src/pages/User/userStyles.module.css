@@ -1,0 +1,31 @@
+.passwordForm input {
+  text-transform: uppercase;
+}
+small {
+  display: block;
+  font-size: 0.6em;
+}
+section {
+  padding: 0;
+}
+.passwordForm {
+  box-shadow: none;
+  background-color: inherit;
+  color: inherit;
+  padding: 0;
+}
+.passwordForm,
+.modalAlert {
+  max-width: 15ch;
+}
+
+.passwordInputItem label {
+  font-size: 0.6em;
+}
+.passwordInputItem {
+  margin: 0;
+}
+.btnPasswordInput {
+  margin: 0;
+  margin-bottom: 1rem;
+}
