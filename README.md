@@ -31,7 +31,7 @@
 - get completed tasks statistical data (completed tasks per day for last 'N' days)
 - authentication (with validation) - login, signup
 - user - change password
-
+- Dark mode
 ## Test Driven Development
 
 - reducers
