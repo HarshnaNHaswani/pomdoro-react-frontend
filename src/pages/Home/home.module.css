@@ -33,3 +33,23 @@
   border-bottom: 1px solid var(--color-status-plain);
   margin-bottom: 8px;
 }
+.taskFilterWrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.taskFilterWrapper .filter option {
+  font-weight: 900;
+  opacity: 1;
+}
+
+@media screen and (max-width: 30em) {
+  .taskFilterWrapper {
+
+    justify-content: flex-start;
+  }
+}

@@ -1,0 +1,45 @@
+.tasks-list {
+  max-width: 96vw;
+  margin: 1rem auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.tasks-list .list-item {
+  padding: 0;
+}
+.tasks-list .card-vertical {
+  width: 27rem;
+  margin: 0;
+  /* max-width: 45vw; */
+  justify-content: space-between;
+}
+.tasks-list .btn {
+  margin: 3px;
+}
+@media screen and (max-width: 30em) {
+  .tasks-list .list-item {
+    padding-left: 0;
+  }
+}
+@media screen and (max-width: 60em) {
+  .tasks-list {
+    max-width: 96vw;
+  }
+  .tasks-list .card-vertical {
+    min-width: unset;
+    max-width: 80vw;
+  }
+}
+@media screen and (min-width: 45em) and (max-width: 60em) {
+  .tasks-list .card-vertical {
+    flex-flow: row nowrap;
+    min-width: auto;
+    width: clamp(44rem, 47rem, 92vw);
+    max-width: 47rem;
+  }
+  .tasks-list .card-vertical header {
+    max-width: 14.62rem;
+  }
+}

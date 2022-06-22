@@ -3,6 +3,10 @@
   align-items: center;
   background-color: var(--color-primary-inverse);
   color: var(--color-primary);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 5;
 }
 
 .header-main .btn {

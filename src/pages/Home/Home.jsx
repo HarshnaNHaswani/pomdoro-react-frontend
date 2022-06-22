@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
 import { TaskCard } from "components/TaskCard";
 import { useTasks } from "context/task-context.js";
+import { useEffect, useState } from "react";
+import "pages/task-list.css";
+import homeStyles from "./home.module.css";
 import { TaskModal } from "./TaskModal";
-import DownArrow from "assets/down-arrow.png";
 export const Home = () => {
-  const { tasksState :{tasks}, clearPendingTasks } = useTasks();
+  const {
+    tasksState: { tasks },
+    clearPendingTasks,
+  } = useTasks();
   const [selectVal, setSelectValue] = useState({
     sortPriority: "none",
     filterPriority: "none",
@@ -47,7 +51,7 @@ export const Home = () => {
 
   return (
     <div>
-      <h1>Home</h1>
+      <h1 className="gutter-y-sm">Home</h1>
       {showTaskModal && (
         <TaskModal
           setShowTaskModal={setShowTaskModal}
@@ -55,9 +59,13 @@ export const Home = () => {
           modalHeading={"ADD TASK"}
         />
       )}
-      <div className={`${tasks.length <= 0 ? "hidden" : ""}`}>
-        <h3>Sort & Filter</h3>
-        <div>
+      <h3>Sort & Filter</h3>
+      <div
+        className={` ${
+          tasks.length <= 0 ? "hidden" : homeStyles.taskFilterWrapper
+        }`}
+      >
+        <div className={homeStyles.filter}>
           <label htmlFor="filter-tags">Tags: </label>
           <select
             onChange={(event) =>
@@ -83,7 +91,7 @@ export const Home = () => {
             &#711;
           </select>
         </div>
-        <div>
+        <div className={homeStyles.filter}>
           <label htmlFor="filter-task-priority">Filter priorty: </label>
           <select
             onChange={(event) =>
@@ -119,7 +127,7 @@ export const Home = () => {
             &#711;
           </select>
         </div>
-        <div>
+        <div className={homeStyles.filter}>
           <label htmlFor="sort-priority">Sort Priority: </label>
           <select
             onChange={(event) =>
@@ -174,7 +182,7 @@ export const Home = () => {
         <div>No tasks in this sort and filter</div>
       )}{" "}
       {filteredTasks.length > 0 && (
-        <ul className="list tasks-list">
+        <ul className="list tasks-list gutter-y-sm">
           {filteredTasks.map((task) => (
             <TaskCard key={task?._id ?? Math.random()} task={task} />
           ))}

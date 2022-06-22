@@ -1,87 +1,43 @@
-:root {
-  --color-accent: #ec8a02;
-  --color-primary: #65caee;
-  --color-secondary: #050a20;
-  --color-background: #f2f5f8;
-  --color-accent-inverse: #2e2e2e;
-  --color-primary-inverse: #000000;
-  --color-secondary-inverse: #aaa4a4;
-  --color-text: #3f4040;
-  --color-graph: #ff000033;
-  --color-graph-border: #06060699;
-  --color-graph-text: inherit;
-  --color-modal-background: #aabbcb;
-  --color-modal-text: #000;
-}
-.dark {
-  --color-background-card: rgb(29, 29, 29);
-  --color-text-card: rgb(179, 177, 177);
-  --color-secondary: #f2f5f8;
-  --color-background: #050a20;
-  --color-secondary-inverse: #3f4040;
-  --color-text: #aaa4a4;
-  --color-graph: #d0ff0099;
-  --color-graph-text: #000;
-  --color-graph-border: #fefefe33;
-  --color-status-idle: #f9910099;
-  --color-inverse-status-idle: #fff;
-  --color-modal-background: #2e2e2e;
-  --color-modal-text: rgb(255, 255, 255);
-}
-
+@import "theme.css";
 .App {
   text-align: center;
   min-height: 100vh;
 }
-
-.tasks-list {
-  max-width: 96vw;
-  margin: auto;
-  display: flex;
-  flex-flow: row wrap;
+.App > footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
-
-.tasks-list .list-item {
-  padding: 0;
+.hidden {
+  display: none;
 }
-
-.tasks-list .card-horizontal {
-  min-width: 30vw;
-  max-width: 40vw;
-  justify-content: space-between;
+.position-right {
+  display: block;
+  margin: 2ch;
+  margin-left: auto;
+  text-align: right;
 }
-.tasks-list .btn {
-  margin: 3px;
+.icon {
+  width: 32px;
+  height: 32px;
+  font-size: 1.25em;
+}
+.list {
+  margin: 8px;
+}
+.btn:disabled {
+  filter: grayscale(100%);
+  transform: scale(0.8);
+}
+.btn:disabled:hover {
+  transform: scale(0.8);
 }
 .flex-row-wrap {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-}
-
-@media screen and (max-width: 60em) {
-  .tasks-list {
-    max-width: 90vw;
-  }
-  .tasks-list .card-horizontal {
-    min-width: unset;
-    max-width: 80vw;
-  }
-}
-
-.parallax {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  max-width: 60vw;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-}
-.parallax p {
-  font-weight: 700;
-  padding: 8px;
 }
 .flex-left {
   justify-content: flex-start;
@@ -89,25 +45,20 @@
 .flex-right {
   justify-content: flex-end;
 }
-.auth-content-wrapper .form {
+.modal {
   position: fixed;
-  right: 20%;
-  top: 15%;
-  transform: translate(10%, 10%);
-  max-height: 70vh;
-  max-width: 70vw;
-  overflow-y: auto;
+  top: 50%;
+  flex-flow: column nowrap;
+  max-height: 30rem;
+  max-width: 90vw;
+  overflow-y: scroll;
+  align-items: center;
 }
-.auth-content-wrapper .form .btn {
-  min-width: 4rem;
-  word-wrap: break-word;
-  max-width: clamp(max-content, 7rem, 80%);
-  min-height: 5rem;
-  max-height: 7rem;
-  display: block;
+.modal .alert {
+  width: 25ch;
 }
-.hidden {
-  display: none;
+.modal-stacked .modal-actions {
+  align-items: stretch;
 }
 .form {
   padding: 1rem;
@@ -121,7 +72,12 @@
   font-size: 1.5em;
   width: 100%;
 }
-
+.form-item legend,
+.form-item > label,
+.form-item p,
+.form-item::placeholder {
+  opacity: 0.7;
+}
 .toggle-switch {
   display: none;
 }
@@ -151,87 +107,4 @@
 }
 .toggle-switch:checked + label:after {
   left: 29px;
-}
-
-.modal {
-  position: fixed;
-  top: 50%;
-  flex-flow: column nowrap;
-  max-height: 30rem;
-  max-width: 90vw;
-  overflow-y: scroll;
-  align-items: center;
-}
-
-.modal .alert {
-  width: 25ch;
-}
-
-.modal-stacked .modal-actions {
-  align-items: stretch;
-}
-.position-right {
-  display: block;
-  margin: 2ch;
-  margin-left: auto;
-  text-align: right;
-}
-
-.icon {
-  width: 32px;
-  height: 32px;
-  font-size: 1.25em;
-}
-
-.list {
-  margin: 8px;
-}
-
-.btn:disabled {
-  filter: grayscale(100%);
-  transform: scale(0.8);
-}
-.btn:disabled:hover {
-  transform: scale(0.8);
-}
-
-.stopwatch .btn {
-  font-size: 1.5em;
-}
-.stopwatch .btn .icon {
-  font-size: 1em;
-  padding: 0;
-}
-
-.App > footer {
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-.form-item legend,
-.form-item > label,
-.form-item p,
-.form-item::placeholder {
-  opacity: 0.7;
-}
-@media screen and (max-width: 30em) {
-  .tasks-list .list-item {
-    padding-left: 0;
-  }
-  .parallax {
-    opacity: 0;
-  }
-}
-@media screen and (max-width: 45em) {
-  .auth-content-wrapper .form {
-    transform: translate(20%, 10%) scaleX(0.8);
-    font-size: 1em;
-  }
-  .auth-content-wrapper .form .form-item,
-  .auth-content-wrapper .form .btn{
-    transform: scale(0.8);
-  }
 }

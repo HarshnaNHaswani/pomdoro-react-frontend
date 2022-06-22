@@ -1,0 +1,30 @@
+:root {
+  --color-accent: #ec8a02;
+  --color-primary: #65caee;
+  --color-secondary: #050a20;
+  --color-background: #f2f5f8;
+  --color-accent-inverse: #2e2e2e;
+  --color-primary-inverse: #000000;
+  --color-secondary-inverse: #aaa4a4;
+  --color-text: #3f4040;
+  --color-graph: #ff000033;
+  --color-graph-border: #06060699;
+  --color-graph-text: inherit;
+  --color-modal-background: #aabbcb;
+  --color-modal-text: #000;
+}
+.dark {
+  --color-background-card: rgb(29, 29, 29);
+  --color-text-card: rgb(179, 177, 177);
+  --color-secondary: #f2f5f8;
+  --color-background: #050a20;
+  --color-secondary-inverse: #3f4040;
+  --color-text: #aaa4a4;
+  --color-graph: #d0ff0099;
+  --color-graph-text: #000;
+  --color-graph-border: #fefefe33;
+  --color-status-idle: #f9910099;
+  --color-inverse-status-idle: #fff;
+  --color-modal-background: #2e2e2e;
+  --color-modal-text: rgb(255, 255, 255);
+}

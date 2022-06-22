@@ -12,10 +12,10 @@ export const taskReducer = (state, action) => {
       } = action.payload;
       return {
         ...state,
-        tasks,
-        archivedTasks,
-        completedTaskStats,
-        trash,
+        // tasks,
+        // archivedTasks,
+        // completedTaskStats,
+        // trash,
       };
     }
     case "ADD_TASK": {

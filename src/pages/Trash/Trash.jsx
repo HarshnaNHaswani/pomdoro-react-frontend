@@ -1,6 +1,8 @@
 import React from "react";
 import { useTasks } from "context/task-context.js";
 import { TaskCard } from "components/TaskCard";
+import "pages/task-list.css"
+
 export const Trash = () => {
   const { tasksState:{trash}, clearTrash } = useTasks();
   return (

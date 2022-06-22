@@ -1,4 +1,4 @@
-import "./App.css";
+import "App.css";
 import { Router } from "router";
 import { useTheme } from "context/theme-context.js";
 function App() {

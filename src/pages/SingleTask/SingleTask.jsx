@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { StopWatch } from "components/StopWatch";
+import { StopWatch } from "components/StopWatch/StopWatch";
 import { useTasks } from "context/task-context.js";
 import { findTask } from "utils/findTask.js";
 import NotPinned from "assets/notPinned.png";

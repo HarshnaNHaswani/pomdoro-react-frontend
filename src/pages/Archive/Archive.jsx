@@ -1,6 +1,8 @@
 import React from "react";
 import { useTasks } from "context/task-context.js";
 import { TaskCard } from "components/TaskCard.jsx";
+import "pages/task-list.css"
+
 export const Archive = () => {
   const { tasksState : { archivedTasks }, clearArchive } = useTasks();
   return (

@@ -37,7 +37,7 @@ export const TaskCardAllTasksPage = ({ task, isArchived = false, isTrash = false
         />
       )}
 
-      <div className="card-container card-horizontal card-shadow badge-wrapper">
+      <div className="card-container card-vertical card-shadow badge-wrapper">
       {task?.taskPriority === "5" && (
           <p className={`badge badge-left badge-md status-inactive-bg`}>
             least

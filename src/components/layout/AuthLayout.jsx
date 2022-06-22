@@ -3,6 +3,7 @@ import graph from "assets/graph.jpg";
 import stats2 from "assets/stats2.jpg";
 import timer2 from "assets/timer2.jpg";
 import todo from "assets/todo.jpg";
+import "./layout.css"
 export const AuthLayout = () => {
   const parallax = [
     { img: todo, content: "Keep track of all your tasks" },

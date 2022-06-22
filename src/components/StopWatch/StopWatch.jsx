@@ -9,7 +9,7 @@ import RestartDark from "assets/restartDark.png";
 import StopDark from "assets/stopDark.png";
 import { useTasks } from "context/task-context.js";
 import { useTheme } from "context/theme-context.js";
-
+import "./stopwatch.css"
 export const StopWatch = ({ duration, taskId, disabled }) => {
   const { completeTask } = useTasks();
   const {

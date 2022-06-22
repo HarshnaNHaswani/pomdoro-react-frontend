@@ -1,5 +1,6 @@
 import { TaskCardAllTasksPage } from "components/TaskCardAllTasksPage.jsx";
 import { useTasks } from "context/task-context.js";
+import "pages/task-list.css"
 export const AllTasks = () => {
   const { tasksState : {tasks, archivedTasks, trash} } = useTasks();
   return (

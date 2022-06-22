@@ -1,0 +1,49 @@
+
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 60vw;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+.parallax p {
+  font-weight: 700;
+  padding: 8px;
+}
+
+.auth-content-wrapper .form {
+  position: fixed;
+  right: 20%;
+  top: 15%;
+  transform: translate(10%, 10%);
+  max-height: 70vh;
+  max-width: 70vw;
+  overflow-y: auto;
+}
+.auth-content-wrapper .form .btn {
+  min-width: 4rem;
+  word-wrap: break-word;
+  max-width: clamp(max-content, 7rem, 80%);
+  min-height: 5rem;
+  max-height: 7rem;
+  display: block;
+}
+
+@media screen and (max-width: 45em) {
+  .auth-content-wrapper .form {
+    transform: translate(20%, 10%) scaleX(0.8);
+    font-size: 1em;
+  }
+  .auth-content-wrapper .form .form-item,
+  .auth-content-wrapper .form .btn {
+    transform: scale(0.8);
+  }
+}
+@media screen and (max-width: 30em) {
+  .parallax {
+    opacity: 0;
+  }
+}
